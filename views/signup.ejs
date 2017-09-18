@@ -1,0 +1,26 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+    <head>
+        <title>Node Authentication</title>
+        <% include partials/head %>
+    </head>
+    <body>
+        <div class="container center form-page">
+            <div class="form">
+                <p>Need an account? Signup</p>
+                <% if (message.length > 0) { %>
+                    <div class="alert error"><%= message %></div>
+                <% } %>
+                <form action="/signup" method="post">
+                    <input type="text" name="username" placeholder="username"><br>
+                    <input type="password" name="password" placeholder="password"><br>
+    
+                    <button type="submit">Signup</button>
+                </form>
+
+                <p>Already have an account? <a href="/login">Login</a></p>
+                <p>Or go <a href="/">Home</a></p>
+            </div>
+    </body>
+</html>

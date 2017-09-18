@@ -1,0 +1,37 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+    <head>
+        <title>Early Reddit Clone</title>
+        <% include partials/head %>
+    </head>
+    <body>
+        <div id="navbar">
+            <% if(user) { %>
+                <a href="/profile" id="profile"><%= user.local.username %></a>
+                <a href="/logout" id="logout">logout</a>
+            <% } else { %>
+                <a href="/login" id="login">Login</a>
+                <a href="/signup" id="signup">Signup</a>
+            <% } %>
+        </div>
+        <div class="container">
+            <% if(user) { %>
+                <div id="toolbar">
+                    <a href="/post" id="post">submit a post</a>
+                </div>
+            <% } %>
+            <h1>Front Page</h1>
+            <% for(var i = 0; i < posts.length; i++) { %>
+                <div class="post">
+                    <a class="header" href=<%- posts[i].post.link %>><%- posts[i].post.title %></a>
+                    <% if(user && posts[i].post.user == user.local.username) { %>
+                        <p class="author">posted by <%- posts[i].post.user %> <a href="/remove?id=<%- posts[i]._id %>">remove</a></p>
+                    <% } else { %>
+                        <p class="author">posted by <%- posts[i].post.user %></p>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+    </body>
+</html>

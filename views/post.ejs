@@ -1,0 +1,29 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+    <head>
+        <title>Node Authentication</title>
+        <% include partials/head %>
+    </head>
+    <body>
+        <div id="navbar">
+            <% if(user) { %>
+                <a href="/profile" id="profile"><%= user.local.username %></a>
+                <a href="/logout" id="logout">logout</a>
+            <% } else { %>
+                <a href="/login" id="login">Login</a>
+                <a href="/signup" id="signup">Signup</a>
+            <% } %>
+        </div>
+        <div class="container">
+            <div class="form">
+                <form method="post">
+                    <p>Submit a post</p>
+                    <input type="text" id="title" name="title" placeholder="title"><br>
+                    <input type="text" id="link" name="link" placeholder="link"><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
